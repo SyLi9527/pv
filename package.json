@@ -46,7 +46,7 @@
     ]
   },
   "scripts": {
-    "prepublish": "scripts/make.sh",
+    "prepublish": "bash scripts/make.sh",
     "build-biojs": "browserify -r ./:bio-pv > js/bio-pv.browserify.js"
   },
   "files": [

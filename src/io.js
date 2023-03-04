@@ -637,6 +637,11 @@ function fetchPdb(url, callback, options) {
   });
 }
 
+function fetchLocalPdb(file, callback, options) {
+    var structure = pdb(file, options);
+    callback(structure);
+}
+
 function fetchSdf(url, callback) {
   fetch(url, function(data) {
     var structure = sdf(data);
@@ -656,6 +661,7 @@ return {
   sdf : sdf,
   crd : crd,
   Remark350Reader : Remark350Reader,
+  fetchLocalPdb: fetchLocalPdb,
   fetchPdb : fetchPdb,
   fetchSdf : fetchSdf,
   fetchCrd : fetchCrd,

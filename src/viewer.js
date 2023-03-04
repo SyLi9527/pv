@@ -271,8 +271,8 @@ Viewer.prototype = {
       slabMode : slabModeToStrategy(opts.slabMode),
       outline : optValue(opts, 'outline', true),
       outlineColor : color.forceRGB(optValue(opts, 'outlineColor', 'black')),
-      outlineWidth: optValue(opts, 'outlineWidth', 1.5),
-      selectionColor : color.forceRGB(optValue(opts, 'selectionColor', '#3f3'), 
+      outlineWidth: optValue(opts, 'outlineWidth', 4.5),
+      selectionColor : color.forceRGB(optValue(opts, 'selectionColor', '#33ff33'), 
                                       0.7),
       fov : optValue(opts, 'fov', 45.0),
       doubleClick : getDoubleClickHandler(opts),
@@ -837,6 +837,7 @@ Viewer.prototype = {
   },
 
   ballsAndSticks : function(name, structure, opts) {
+    // console.log("holy shit")
     var options = this._handleStandardMolOptions(opts, structure);
 
     options.color = options.color || color.byElement();

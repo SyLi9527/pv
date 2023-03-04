@@ -40,10 +40,10 @@ def next_available_name(index):
   remaining = index
   while remaining > 0:
     chars.append(allowed_chars[remaining % len(allowed_chars)])
-    remaining /= len(allowed_chars)
+    remaining = int(remaining / len(allowed_chars))
   return '_%s' % ''.join(reversed(chars))
 
-private_tokens = [(v,k) for k,v in token_occurences.iteritems() if k.startswith('_')]
+private_tokens = [(v,k) for k,v in token_occurences.items() if k.startswith('_')]
 
 sorted_by_occurence = sorted(private_tokens, reverse=True)
 replacements = {}

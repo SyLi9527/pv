@@ -275,7 +275,8 @@ $('#load-from-pdb').change(function() {
   var pdbId = this.value;
   this.value = '';
   this.blur();
-  var url = 'http://www.rcsb.org/pdb/files/' + pdbId + '.pdb';
+  // var url = 'http://www.rcsb.org/pdb/files/' + pdbId + '.pdb';
+  var url = 'https://files.rcsb.org/download/' + pdbId + '.pdb';
   console.log(url)
   io.fetchPdb(url, function(s) {
     structure = s;
@@ -283,6 +284,27 @@ $('#load-from-pdb').change(function() {
     viewer.autoZoom();
   });
 });
+$('#load-from-local').change(function(event) {
+  
+  const reader = new FileReader()
+  reader.onload = (event) => handleFileLoad(event);
+  reader.readAsText(event.target.files[0])
+  
+ 
+
+});
+
+function handleFileLoad(event) {
+  // console.log(event);
+  var content = event.target.result;
+  this.blur();
+  console.log(content)
+  io.fetchLocalPdb(content, function(s) {
+    structure = s;
+    cartoon();
+    viewer.autoZoom();
+  });
+}
 
 viewer = pv.Viewer(document.getElementById('viewer'), { 
     width : 'auto', height: 'auto', antialias : true, fog : true,
